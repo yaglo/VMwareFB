@@ -7,7 +7,7 @@
 # and Makefile.postamble (both optional), and Makefile will include them.
 #
 
-NAME = VMWareFB
+NAME = VMwareFB
 
 PROJECTVERSION = 1.1
 LANGUAGE = English
@@ -16,7 +16,7 @@ LOCAL_RESOURCES = Info.rtf Localizable.strings
 
 GLOBAL_RESOURCES = Default.table Display.modes
 
-TOOLS = vmwareFB_reloc.tproj
+TOOLS = VMwareFB_reloc.tproj
 
 OTHERSRCS = Makefile Makefile.postamble Makefile.preamble
 

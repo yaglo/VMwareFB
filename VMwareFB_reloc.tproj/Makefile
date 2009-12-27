@@ -7,16 +7,16 @@
 # and Makefile.postamble (both optional), and Makefile will include them.
 #
 
-NAME = VMWareFB_reloc
+NAME = VMwareFB_reloc
 
 PROJECTVERSION = 1.1
 LANGUAGE = English
 
-CLASSES = VMWareFB.m VMWareFBAccel.m VMWareFBRegisters.m\
-          VMWareFBUtility.m
+CLASSES = VMwareFB+Accel.m VMwareFB+Registers.m VMwareFB+Utility.m\
+          VMwareFB.m
 
 HFILES = guest_os.h includeCheck.h svga_limits.h svga_reg.h vmware.h\
-         VMWareFB.h vm_basic_types.h vm_device_version.h
+         VMwareFB.h vm_basic_types.h vm_device_version.h
 
 CFILES = vmware.c
 

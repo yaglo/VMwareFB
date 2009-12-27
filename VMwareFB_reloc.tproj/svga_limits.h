@@ -2,11 +2,11 @@
 /* **********************************************************
  * Copyright (C) 1998-2001 VMware, Inc.
  * All Rights Reserved
- * Id: svga_limits.h,v 1.8 2001/01/26 23:32:15 yoel Exp $
+ * $Id$
  * **********************************************************/
 
 /*
- * svga_reg.h --
+ * svga_limits.h --
  *
  * SVGA limits
  */
@@ -19,10 +19,12 @@
 #include "includeCheck.h"
 
 /*
- * Location and size of SVGA frame buffer.
+ * Location and size of SVGA frame buffer and the FIFO.
  */
-#define SVGA_FB_MAX_SIZE       (16*1024*1024)
-#define SVGA_MEM_SIZE          (256*1024)
+#if 0
+# define SVGA_VRAM_SIZE         (16*1024*1024)
+# define SVGA_MEM_SIZE          (256*1024)
+#endif
 
 /*
  * SVGA_FB_START is the default starting address of the SVGA frame
@@ -51,7 +53,7 @@
  * chipset, the framebuffer start is determined solely based on the value
  * the guest BIOS or OS programs into the PCI base address registers.
  */
-#define SVGA_FB_LEGACY_START		0xD0000000
+#define SVGA_FB_LEGACY_START		0x7EFC0000
 #define SVGA_FB_LEGACY_START_BIGMEM	0xE0000000
 
 #endif

@@ -26,8 +26,7 @@ typedef uint32 CARD32;
 #define PCI_BASE_ADDRESS_IO_MASK (~0x03UL)
 #endif
 
-
-extern CARD32 vmwareReadReg(uint16 indexReg, uint16 valueReg, int index);
+extern CARD32 vmwareReadReg (uint16 indexReg, uint16 valueReg, int index);
 
 extern void vmwareWriteReg(uint16 indexReg, uint16 valueReg, int index, CARD32 value);
 
@@ -37,4 +36,4 @@ extern uint32 VMXGetVMwareSvgaId(uint16 indexReg, uint16 valueReg);
 
 extern CARD32 vmwareCalculateWeight(CARD32 mask);
 
-#endif							/* VMWARE_H */
+#endif	/* VMWARE_H */

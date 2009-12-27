@@ -18,44 +18,45 @@
 /* VMware specific functions */
 
 CARD32
- vmwareCalculateWeight(CARD32 mask)
+vmwareCalculateWeight (CARD32 mask)
 {
 	CARD32 weight;
-	
+
 	for (weight = 0; mask; mask >>= 1) {
 		if (mask & 1) {
-	    weight++;
+			weight++;
 		}
 	}
 	return weight;
 }
 
 CARD32
- vmwareReadReg(uint16 indexReg, uint16 valueReg, int index)
+vmwareReadReg (uint16 indexReg, uint16 valueReg, int index)
 {
-	outl(indexReg, index);
-	return inl(valueReg);
+	outl (indexReg, index);
+	return inl (valueReg);
 }
 
 void
- vmwareWriteReg(uint16 indexReg, uint16 valueReg, int index, CARD32 value)
+vmwareWriteReg (uint16 indexReg, uint16 valueReg, int index, CARD32 value)
 {
-	outl(indexReg, index);
-	outl(valueReg, value);
+	outl (indexReg, index);
+	outl (valueReg, value);
 }
 
 void
- vmwareWriteWordToFIFO(CARD32* vmwareFIFO, uint16 indexReg, uint16 valueReg, CARD32 value)
+vmwareWriteWordToFIFO (CARD32* vmwareFIFO, uint16 indexReg, uint16 valueReg, CARD32 value)
 {
 	/* Need to sync? */
-	if ((vmwareFIFO[SVGA_FIFO_NEXT_CMD] + sizeof(CARD32) == vmwareFIFO[SVGA_FIFO_STOP])
+	if ((vmwareFIFO[SVGA_FIFO_NEXT_CMD] + sizeof (CARD32) == vmwareFIFO[SVGA_FIFO_STOP])
 		|| (vmwareFIFO[SVGA_FIFO_NEXT_CMD] == vmwareFIFO[SVGA_FIFO_MAX] - sizeof(CARD32) &&
 			vmwareFIFO[SVGA_FIFO_STOP] == vmwareFIFO[SVGA_FIFO_MIN])) {
 		vmwareWriteReg(indexReg, valueReg, SVGA_REG_SYNC, 1);
-		while (vmwareReadReg(indexReg, valueReg, SVGA_REG_BUSY)) ;
+		while (vmwareReadReg(indexReg, valueReg, SVGA_REG_BUSY))
+			;	// nothing
 	}
-	vmwareFIFO[vmwareFIFO[SVGA_FIFO_NEXT_CMD] / sizeof(CARD32)] = value;
-	vmwareFIFO[SVGA_FIFO_NEXT_CMD] += sizeof(CARD32);
+	vmwareFIFO[vmwareFIFO[SVGA_FIFO_NEXT_CMD] / sizeof (CARD32)] = value;
+	vmwareFIFO[SVGA_FIFO_NEXT_CMD] += sizeof (CARD32);
 	if (vmwareFIFO[SVGA_FIFO_NEXT_CMD] == vmwareFIFO[SVGA_FIFO_MAX]) {
 		vmwareFIFO[SVGA_FIFO_NEXT_CMD] = vmwareFIFO[SVGA_FIFO_MIN];
 	}
@@ -77,11 +78,10 @@ void
  *
  *-----------------------------------------------------------------------------
  */
-
 uint32
- VMXGetVMwareSvgaId(uint16 indexReg, uint16 valueReg)
+VMXGetVMwareSvgaId(uint16 indexReg, uint16 valueReg)
 {
-	uint32 vmware_svga_id;
+	uint32  vmware_svga_id;
 
 	/* Any version with any SVGA_ID_* support will initialize SVGA_REG_ID
 	 * to SVGA_ID_0 to support versions of this driver with SVGA_ID_0.
@@ -96,16 +96,16 @@ uint32
 	 * or SVGA_ID_2.
 	 */
 
-	vmwareWriteReg(indexReg, valueReg, SVGA_REG_ID, SVGA_ID_2);
-	vmware_svga_id = vmwareReadReg(indexReg, valueReg, SVGA_REG_ID);
-	IOLog("VMWareFB: read ID: (0x%08x)\n", vmware_svga_id);
+	vmwareWriteReg (indexReg, valueReg, SVGA_REG_ID, SVGA_ID_2);
+	vmware_svga_id = vmwareReadReg (indexReg, valueReg, SVGA_REG_ID);
+	IOLog ("VMwareFB: read ID: (0x%08x)\n", vmware_svga_id);
 	if (vmware_svga_id == SVGA_ID_2) {
 		return SVGA_ID_2;
 	}
 
-	vmwareWriteReg(indexReg, valueReg, SVGA_REG_ID, SVGA_ID_1);
-	vmware_svga_id = vmwareReadReg(indexReg, valueReg, SVGA_REG_ID);
-	IOLog("VMWareFB: read ID: (0x%08x)\n", vmware_svga_id);
+	vmwareWriteReg (indexReg, valueReg, SVGA_REG_ID, SVGA_ID_1);
+	vmware_svga_id = vmwareReadReg (indexReg, valueReg, SVGA_REG_ID);
+	IOLog ("VMwareFB: read ID: (0x%08x)\n", vmware_svga_id);
 	if (vmware_svga_id == SVGA_ID_1) {
 		return SVGA_ID_1;
 	}
@@ -117,4 +117,3 @@ uint32
 	/* No supported VMware SVGA devices found */
 	return SVGA_ID_INVALID;
 }
-
