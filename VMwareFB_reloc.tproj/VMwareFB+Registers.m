@@ -2,10 +2,10 @@
  * Copyright (c) 2002 by Atomic Object LLC
  * All rights reserved.
  *
- * VMwareFBRegisters.m -- registers methods for VMware display driver
+ * VMwareFB+Registers.m -- register methods for VMware display driver
  *
  * Created by Bill Bereza 2001/01/17
- * $Id: VMwareFBRegisters.m,v 1.1 2002/02/14 22:15:35 bereza Exp $
+ * $Id$
  */
 
 #import "VMwareFB.h"
