@@ -24,7 +24,7 @@
 	IOLog ("VMware Display Driver by Atomic Object LLC\n");
 	IOLog ("Build Date:    %s\n\n", VM_BUILD_DATE);
 	IOLog ("HW Info:\n");
-	IOLog ("Registers:     0x%04x (index), 0x%04x (value)\n", indexReg);
+	IOLog ("Registers:     0x%04x (index), 0x%04x (value)\n", indexReg, valueReg);
 	IOLog ("Host Caps:     0x%08x\n", vmwareCapability);
 	IOLog ("Selected mode: %d (%dx%d, %d bytes/line)\n",
 	       selectedMode, displayInfo->width, displayInfo->height, displayInfo->rowBytes);
