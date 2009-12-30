@@ -131,7 +131,7 @@ static const IODisplayInfo modeTable[] = {
 #endif
 
 	int         i;                               // scratch var
-	char        *name = [self name];
+	const char  *name = [self name];
 
 	int         numRanges;                       /* number of memory ranges */
 	IORange     *oldRange, newRange[3];
@@ -429,7 +429,7 @@ static const IODisplayInfo modeTable[] = {
 	depth = [self readRegister: SVGA_REG_DEPTH];
 
 	VMLog ("VMwareFB: Color depth: %d (%d bits/pixel)\n", depth, bitsPerPixel);
-	VMLog ("VMwareFB: Color masks: (0x%x, 0x%x, 0x%x)", redMask, greenMask, blueMask);
+	VMLog ("VMwareFB: Color masks: (0x%x, 0x%x, 0x%x)\n", redMask, greenMask, blueMask);
 
 	switch (bitsPerPixel) {
 		case 8:
