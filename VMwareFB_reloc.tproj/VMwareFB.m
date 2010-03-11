@@ -74,6 +74,8 @@ static const IODisplayInfo modeTable[] = {
 	}, {	// Weird modes
 		MKMODE (800,480)	/* 800 x 480, RGB:888/32 */
 	}, {
+		MKMODE (1024,600)	/* 1024 x 600, RGB:888/32 */
+	}, {
 		MKMODE (1280,768)	/* 1280 x 768, RGB:888/32 */
 	}, {
 		MKMODE (1280,1024)	/* 1280 x 1024, RGB:888/32 */
