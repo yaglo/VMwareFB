@@ -112,6 +112,7 @@ As of 1.2, Video modes now supported (all @60Hz, with color space RGB:888/32):
  1080 x 1920
  1200 x 1920
  1080 x 2048
+ 1536 x 2048
  1440 x 2560
  1600 x 2560
 
