@@ -29,6 +29,7 @@
  */
 #define RGB32 "--------RRRRRRRRGGGGGGGGBBBBBBBB"
 #define MKMODE(x,y) x, y, x, x*4, 60, 0, IO_24BitsPerPixel, IO_RGBColorSpace, RGB32, 0, 0
+#define MKMODE2(x,y,x1) x, y, x1, x1*4, 60, 0, IO_24BitsPerPixel, IO_RGBColorSpace, RGB32, 0, 0
 
 static const IODisplayInfo modeTable[] = {
 	{
@@ -55,6 +56,8 @@ static const IODisplayInfo modeTable[] = {
 		MKMODE (1280,1024)	/* 1280 x 1024, RGB:888/32 */
 	}, {
 		MKMODE (1360,768)	/* 1360 x 768, RGB:888/32 */
+	}, {
+		MKMODE2(1366,768,1368)	/* 1366 x 768, RGB:888/32 */
 	}, {
 		MKMODE (1400,1050)	/* 1400 x 1050, RGB:888/32 */
 	}, {
